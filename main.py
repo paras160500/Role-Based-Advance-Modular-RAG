@@ -1,6 +1,9 @@
-def main():
-    print("Hello from role-based-advance-modular-rag!")
+from fastapi import FastAPI
 
+app = FastAPI()
 
-if __name__ == "__main__":
-    main()
+@app.get("/health")
+def health_check():
+    return {
+        "message" : "OK"
+    }
