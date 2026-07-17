@@ -27,11 +27,11 @@ def mongo_test():
         )
 
         client.admin.command("ping")
-        return {"status": "connected"}
+        return {"status": "connected successfully."}
 
     except Exception as e:
         return {
             "error": str(e),
             "type": str(type(e)),
-            "trace": traceback.format_exc()
+            "trace": traceback.format_exc() 
         }
