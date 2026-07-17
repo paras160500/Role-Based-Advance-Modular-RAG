@@ -2,6 +2,8 @@
 
 <div align="center">
 
+![Architecture Diagram](diagram.png)
+
 ### 🌐 Live Deployment
 
 | Service | URL | Platform |
