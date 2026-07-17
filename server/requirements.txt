@@ -1,0 +1,24 @@
+fastapi
+uvicorn[standard]
+python-multipart      # For file upload
+
+langchain
+langchain-community
+langchain-core
+langchain-groq 
+
+pinecone
+
+langchain-openai
+PyPDF
+
+python-dotenv
+
+pydantic
+requests
+tqdm
+
+pymongo==4.10.1
+dnspython>=2.6.1
+certifi>=2024.0.0
+bcrypt
