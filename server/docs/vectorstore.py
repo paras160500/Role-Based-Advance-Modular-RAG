@@ -85,7 +85,8 @@ async def load_vecorstore(uploaded_files , role : str , doc_id : str):
             "source" : file.filename,
             "doc_id" : doc_id,
             "role" : role,
-            "page" : chunk.metadata.get("page" , 0)
+            "page" : chunk.metadata.get("page" , 0),
+            "text" : texts
         }
             for _, chunk in enumerate(chunks)
         ]
