@@ -86,7 +86,7 @@ async def load_vecorstore(uploaded_files , role : str , doc_id : str):
             "doc_id" : doc_id,
             "role" : role,
             "page" : chunk.metadata.get("page" , 0),
-            "text" : texts
+            "text" : chunk.page_content
         }
             for _, chunk in enumerate(chunks)
         ]
@@ -94,6 +94,10 @@ async def load_vecorstore(uploaded_files , role : str , doc_id : str):
         embeddings = await asyncio.to_thread(embed_model.embed_documents , texts)
         # Insert data into pinecone db
         print("Uploading to Pinecone...")
-        index.upsert(vectors = zip(ids,embeddings,metadata))
+        vectors = list(zip(ids, embeddings, metadata))
+        batch_size = 20
+        for i in range(0, len(vectors), batch_size):
+            batch = vectors[i:i + batch_size]
+            index.upsert(vectors=batch)
 
         print(f"File :- {file.filename} uploaded.")
